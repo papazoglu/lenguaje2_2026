@@ -16,6 +16,7 @@ namespace View
         private frmSocios _formSocios;
         public SociosController _socioController = new SociosController();
 
+        //constructor para el update
         public frmSociosCarga(Socios socio, int accion, frmSocios frmSocios)
         {
             InitializeComponent();
@@ -32,6 +33,15 @@ namespace View
             this.cboLocalidad.SelectedValue = socio.IdLocalidad;
             
 
+        }
+        //constructor para el insert
+        public frmSociosCarga(int accion, frmSocios frmSocios)
+        {
+            InitializeComponent();            
+            _accion = accion;
+            this._formSocios = frmSocios;
+            this.CargarLocalidades();
+            txtIdSocio.Select();
         }
 
         private void CargarLocalidades()

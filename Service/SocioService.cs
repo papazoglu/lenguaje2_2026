@@ -36,7 +36,7 @@ namespace Service
             //if (_repo.suspendido(alumno.Dni) ==1)
             //throw new Exception("El usuario esta susoendid ");
             //   return false;
-            if(_accion == 0) {
+            
             return _sociosRepository.updateSocio(socio, _accion);
         }
     }

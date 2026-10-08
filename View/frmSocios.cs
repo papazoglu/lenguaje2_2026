@@ -147,8 +147,6 @@ namespace View
             {
                 if (this.dataGridSocios.CurrentRow != null)
                 {
-
-                    string localidad;
                     Socios socio = new Socios();
 
                     socio.Nombre = this.dataGridSocios.CurrentRow.Cells["Nombre"].Value?.ToString() ?? "";
@@ -157,14 +155,43 @@ namespace View
                     socio.Direccion = this.dataGridSocios.CurrentRow.Cells["Direccion"].Value?.ToString() ?? "";
                     socio.Email = this.dataGridSocios.CurrentRow.Cells["Email"].Value?.ToString() ?? "";
                     socio.IdLocalidad = Convert.ToInt32(this.dataGridSocios.CurrentRow.Cells["IdLocalidad"].Value);
-                    //socio.IdLocalidad = this.dataGridSocios.CurrentRow.Cells["IdLocalidad"].Value?.ToString() ?? "";
                     socio.IdSocio = Convert.ToInt32(this.dataGridSocios.CurrentRow.Cells["IdSocio"].Value);
-
-
 
                     MessageBox.Show($"nombre seleccionado: {socio.Nombre}");
 
                     Form sociosCarga = new frmSociosCarga(socio, 2, this);
+                    sociosCarga.Show();
+                }
+                else
+                {
+                    MessageBox.Show("no hay filas");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void insertarPrestamo()
+        {
+            try
+            {
+                if (this.dataGridSocios.CurrentRow != null)
+                {
+                    //Socios socio = new Socios();
+
+                    //socio.Nombre = this.dataGridSocios.CurrentRow.Cells["Nombre"].Value?.ToString() ?? "";
+                    //socio.Dni = Convert.ToInt32(this.dataGridSocios.CurrentRow.Cells["Dni"].Value);
+                    //socio.Apellido = this.dataGridSocios.CurrentRow.Cells["Apellido"].Value?.ToString() ?? "";
+                    //socio.Direccion = this.dataGridSocios.CurrentRow.Cells["Direccion"].Value?.ToString() ?? "";
+                    //socio.Email = this.dataGridSocios.CurrentRow.Cells["Email"].Value?.ToString() ?? "";
+                    //socio.IdLocalidad = Convert.ToInt32(this.dataGridSocios.CurrentRow.Cells["IdLocalidad"].Value);
+                    //socio.IdSocio = Convert.ToInt32(this.dataGridSocios.CurrentRow.Cells["IdSocio"].Value);
+
+                    //MessageBox.Show($"nombre seleccionado: {socio.Nombre}");
+
+                    Form sociosCarga = new frmSociosCarga(1, this);
                     sociosCarga.Show();
                 }
                 else
@@ -192,7 +219,7 @@ namespace View
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            insertarPrestamo();
         }
     }
 }
