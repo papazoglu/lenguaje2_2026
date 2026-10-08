@@ -12,9 +12,9 @@ namespace Controller
             return _sociosService.listarSocios();
         }
 
-        public bool guardarSocio(Socios socio, int _accion)
+        public bool guardarSocio(Socios socio, int _accion, int _id_socio)
         {
-            return _sociosService.guardarSocio(socio, _accion);
+            return _sociosService.guardarSocio(socio, _accion, _id_socio);
         }
 
         public List<Localidad> CargarComboLocalidades()

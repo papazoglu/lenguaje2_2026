@@ -82,10 +82,9 @@ namespace Repository
         }
 
 
-        public bool updateSocio(Socios socio, int _accion)
+        public bool updateSocio(Socios socio, int _accion, int _id_socio)
         {
-            //var sqlConn = new MySqlConnection();
-            //var infiere que sqlConn es de tipo MySqlConnection()
+            
             using (var sqlConn = Conexion.getInstancia("root", "root").CrearConexion())
             {
                 sqlConn.Open();
@@ -98,7 +97,7 @@ namespace Repository
                                 id_localidad=@id_localidad                               
                                 where id_socio=@id_socio";
                 MySqlCommand comando = new MySqlCommand(query, sqlConn);
-                comando.Parameters.AddWithValue("@id_socio", socio.IdSocio);
+                comando.Parameters.AddWithValue("@id_socio", _id_socio);
                 comando.Parameters.AddWithValue("@nombre", socio.Nombre);
                 comando.Parameters.AddWithValue("@apellido", socio.Apellido);
                 comando.Parameters.AddWithValue("@email", socio.Email);
@@ -116,16 +115,11 @@ namespace Repository
 
         public bool insertSocio(Socios socio, int _accion)
         {
-            //var sqlConn = new MySqlConnection();
-            //var infiere que sqlConn es de tipo MySqlConnection()
+
             using (var sqlConn = Conexion.getInstancia("root", "root").CrearConexion())
             {
                 sqlConn.Open();
-
-
-                if (_accion == 2)
-                {
-                    string query = @"insert into socios(
+                string query = @"insert into socios(
                                 dni,
                                 nombre,
                                 apellido,
@@ -139,35 +133,18 @@ namespace Repository
                                     @email,
                                     @direccion,
                                     @id_localidad);";
-                    MySqlCommand comando = new MySqlCommand(query, sqlConn);
-                    comando.Parameters.AddWithValue("@dni", socio.Dni);
-                    comando.Parameters.AddWithValue("@nombre", socio.Nombre);
-                    comando.Parameters.AddWithValue("@apellido", socio.Apellido);
-                    comando.Parameters.AddWithValue("@email", socio.Email);
-                    comando.Parameters.AddWithValue("@direccion", socio.Direccion);
-                    comando.Parameters.AddWithValue("@id_localidad", socio.IdLocalidad);
-                    int resul = comando.ExecuteNonQuery();
-
-
-                    return true;
-                }
-                else
-                {
-                    //string query = "update alumnos set nombre=@nombre, dni=@dni, id_localidad=@id_localidad where id=@id";
-                    //MySqlCommand comando = new MySqlCommand(query, sqlConn);
-                    //comando.Parameters.AddWithValue("@id", alumno.Id);
-                    //comando.Parameters.AddWithValue("@nombre", alumno.Nombre);
-                    //comando.Parameters.AddWithValue("@dni", alumno.Dni);
-                    //comando.Parameters.AddWithValue("@id_localidad", alumno.IdLocalidad);
-                    //int resul = comando.ExecuteNonQuery();
-                    ////MessageBox.Show($"La consulta devolvio: {resul}");
-                    //return true;
-                }
-
-
+                MySqlCommand comando = new MySqlCommand(query, sqlConn);
+                comando.Parameters.AddWithValue("@dni", socio.Dni);
+                comando.Parameters.AddWithValue("@nombre", socio.Nombre);
+                comando.Parameters.AddWithValue("@apellido", socio.Apellido);
+                comando.Parameters.AddWithValue("@email", socio.Email);
+                comando.Parameters.AddWithValue("@direccion", socio.Direccion);
+                comando.Parameters.AddWithValue("@id_localidad", socio.IdLocalidad);
+                int resul = comando.ExecuteNonQuery();
+                return true;
             }
             return false;
         }
-
+        
     }
 }

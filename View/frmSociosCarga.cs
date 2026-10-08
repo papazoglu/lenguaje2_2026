@@ -13,6 +13,7 @@ namespace View
     public partial class frmSociosCarga : Form
     {
         int _accion;
+        int _id_socio;
         private frmSocios _formSocios;
         public SociosController _socioController = new SociosController();
 
@@ -20,10 +21,10 @@ namespace View
         public frmSociosCarga(Socios socio, int accion, frmSocios frmSocios)
         {
             InitializeComponent();
-           
+
             this.txtNombre.Text = Convert.ToString(socio.Nombre);
             this.txtDNI.Text = Convert.ToString(socio.Dni);
-            this.txtIdSocio.Text = Convert.ToString(socio.IdSocio);
+            _id_socio = Convert.ToInt32(socio.IdSocio);
             this.txtEmail.Text = Convert.ToString(socio.Email);
             this.txtDireccion.Text = Convert.ToString(socio.Direccion);
             this.txtApellido.Text = Convert.ToString(socio.Apellido);
@@ -31,22 +32,21 @@ namespace View
             this._formSocios = frmSocios;
             this.CargarLocalidades();
             this.cboLocalidad.SelectedValue = socio.IdLocalidad;
-            
+
 
         }
         //constructor para el insert
         public frmSociosCarga(int accion, frmSocios frmSocios)
         {
-            InitializeComponent();            
+            InitializeComponent();
             _accion = accion;
             this._formSocios = frmSocios;
             this.CargarLocalidades();
-            txtIdSocio.Select();
+            txtDNI.Select();
         }
 
         private void CargarLocalidades()
         {
-            _formSocios.mostrarSocios();
             var localidades = _socioController.CargarComboLocalidades();
 
             //// Asignar el DataSource al ComboBox
@@ -63,7 +63,19 @@ namespace View
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            GuardarSocio();
+            try
+            {
+                GuardarSocio();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+
+
         }
 
         private void GuardarSocio()
@@ -74,23 +86,24 @@ namespace View
             socio.Apellido = this.txtApellido.Text;
             socio.Email = this.txtEmail.Text;
             socio.Direccion = this.txtDireccion.Text;
-            socio.IdSocio = Convert.ToInt32(this.txtIdSocio.Text);
+
             socio.IdLocalidad = Convert.ToInt32(cboLocalidad.SelectedValue);
-            //socio.IdLocalidad = (this.cboLocalidad.SelectedValue.ToString());
-            //if (string.IsNullOrEmpty(this.txtId.Text))
-            //{
-            //    alumno.Id = 0;
-            //}
-            //else
-            //{
-            //    alumno.Id = Convert.ToInt32(this.txtId.Text);
-            //}
+            _socioController.guardarSocio(socio, _accion, _id_socio);
 
-            //if (_accion == 2){
-                _socioController.guardarSocio(socio, _accion);
-            //}else{
+        }
 
-//            }
+        private void frmSociosCarga_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _formSocios.mostrarSocios();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }

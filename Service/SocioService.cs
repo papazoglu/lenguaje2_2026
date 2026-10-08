@@ -18,7 +18,7 @@ namespace Service
             return this._sociosRepository.CargarComboLocalidades();
         }
 
-        public bool guardarSocio(Socios socio, int _accion)
+        public bool guardarSocio(Socios socio, int _accion, int _id_socio)
         {
             // Regla de negocio: edad mínima
             //if (alumno.FechaNacimiento > DateTime.Now.AddYears(-5))
@@ -36,8 +36,13 @@ namespace Service
             //if (_repo.suspendido(alumno.Dni) ==1)
             //throw new Exception("El usuario esta susoendid ");
             //   return false;
+            if(_accion == 2){
+                return _sociosRepository.updateSocio(socio, _accion, _id_socio);
+            }else{
+                return _sociosRepository.insertSocio(socio, _accion);
+            }
+
             
-            return _sociosRepository.updateSocio(socio, _accion);
         }
     }
 }
