@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Controller/Controller.csproj" />
+  <Project Path="Model/Model.csproj" />
+  <Project Path="Repository/Repository.csproj" />
+  <Project Path="Service/Service.csproj" />
+  <Project Path="TestVentas/TestVentas.csproj" Id="c99bb7a0-a55b-4923-9cf5-39287e71ab17" />
+  <Project Path="View/View.csproj" />
+</Solution>
