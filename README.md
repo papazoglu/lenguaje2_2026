@@ -14,7 +14,7 @@ Proyecto desarrollado como parte de la materia **Lenguaje II** del:
 
 ---
 
-##Descripción del proyecto
+## Descripción del proyecto
 
 Este proyecto consiste en el desarrollo de un sistema para la **administración de un restaurante**.
 
