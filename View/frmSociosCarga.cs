@@ -81,7 +81,8 @@ namespace View
         {
             try
             {
-                if (!ValidarNombre())
+            //unificar las validaciones de campos en la vista o en el cotrolador
+            if (!ValidarNombre())
                 {
                     txtNombre.Focus();
                     return;
