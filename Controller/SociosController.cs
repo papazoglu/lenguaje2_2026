@@ -46,6 +46,12 @@ public bool ValidarEmail(string email)
         return _sociosService.guardarSocio(socio, _accion, _id_socio);
         }
 
+        public bool eliminarSocio(int _id_socio)
+        {
+
+            return _sociosService.eliminarSocio(_id_socio);
+        }
+
         public List<Localidad> CargarComboLocalidades()
         {
             return this._sociosService.CargarComboLocalidades();

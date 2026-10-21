@@ -182,6 +182,26 @@ namespace Repository
 
 
 
+        public bool eliminarSocio(int idSocio)
+        {
+            using (var sqlConn = Conexion.getInstancia("root", "root").CrearConexion())
+            {
+                sqlConn.Open();
+
+                string sql = @"
+                    DELETE FROM socios
+                    WHERE id_socio = @idSocio;";
+
+                using MySqlCommand comando = new MySqlCommand(sql, sqlConn);
+
+                comando.Parameters.AddWithValue("@idSocio", idSocio);
+
+                int filasAfectadas = comando.ExecuteNonQuery();
+
+                return filasAfectadas > 0;
+            }
+        }
+
 
         public bool insertSocio(Socios socio, int _accion)
         {

@@ -61,14 +61,37 @@ namespace View
 
         }
 
+        private bool ValidarNombre()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                errorProvider1.SetError(
+                    txtNombre,
+                    "El nombre es obligatorio."
+                );
+
+                return false;
+            }
+
+            errorProvider1.SetError(txtNombre, "");
+            return true;
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (GuardarSocio()){
+                if (!ValidarNombre())
+                {
+                    txtNombre.Focus();
+                    return;
+                }
+
+                if (GuardarSocio())
+                {
                     this.Close();
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -120,6 +143,14 @@ namespace View
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                errorProvider1.SetError(txtNombre, "");
+            }
         }
     }
 }

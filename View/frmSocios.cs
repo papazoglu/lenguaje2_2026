@@ -236,5 +236,67 @@ namespace View
 
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // 1. Verificar que haya una fila seleccionada
+            if (dataGridSocios.CurrentRow == null)
+            {
+                MessageBox.Show(
+                    "Seleccione un socio para eliminar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            // 2. Obtener el id_socio del socio seleccionado
+            int idSocio = Convert.ToInt32(
+                dataGridSocios.CurrentRow.Cells["IdSocio"].Value
+            );
+            string nombreSocio = (Convert.ToString(dataGridSocios.CurrentRow.Cells["Apellido"].Value)??"")
+            + " " + 
+                (Convert.ToString(dataGridSocios.CurrentRow.Cells["Nombre"].Value) ?? "");
+            
+
+            // 3. Pedir confirmación para eliminar al socio
+            DialogResult respuesta = MessageBox.Show(
+                $"¿Está seguro de que desea eliminar al socio {nombreSocio.ToUpper()} ?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (respuesta != DialogResult.Yes)
+                return;
+
+            // 4. Llamar al método del controller
+            bool eliminado = _sociosController.eliminarSocio(idSocio);
+
+            // 5. Informar el resultado de la eliminacion
+            if (eliminado)
+            {
+                MessageBox.Show(
+                    "Socio eliminado correctamente.",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Actualizar la grilla
+                dataGridSocios.DataSource = _sociosController.filtrarSocios("");
+            }
+            else
+            {
+                MessageBox.Show(
+                    "No se pudo eliminar el socio.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+
+        }
     }
 }

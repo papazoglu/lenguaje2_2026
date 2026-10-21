@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panelDatos = new Panel();
             lblEmail = new Label();
             lblLocalidad = new Label();
@@ -44,8 +45,10 @@
             flowLayoutPanelInferior = new FlowLayoutPanel();
             btnCancelar = new Button();
             btnGuardar = new Button();
+            errorProvider1 = new ErrorProvider(components);
             panelDatos.SuspendLayout();
             flowLayoutPanelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panelDatos
@@ -64,113 +67,107 @@
             panelDatos.Controls.Add(txtApellido);
             panelDatos.Dock = DockStyle.Fill;
             panelDatos.Location = new Point(0, 0);
-            panelDatos.Margin = new Padding(3, 2, 3, 2);
             panelDatos.Name = "panelDatos";
-            panelDatos.Size = new Size(578, 258);
+            panelDatos.Size = new Size(654, 344);
             panelDatos.TabIndex = 1;
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(221, 93);
+            lblEmail.Location = new Point(253, 124);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(41, 15);
+            lblEmail.Size = new Size(52, 20);
             lblEmail.TabIndex = 12;
             lblEmail.Text = "E-mail";
             // 
             // lblLocalidad
             // 
             lblLocalidad.AutoSize = true;
-            lblLocalidad.Location = new Point(411, 93);
+            lblLocalidad.Location = new Point(470, 124);
             lblLocalidad.Name = "lblLocalidad";
-            lblLocalidad.Size = new Size(58, 15);
+            lblLocalidad.Size = new Size(74, 20);
             lblLocalidad.TabIndex = 11;
             lblLocalidad.Text = "Localidad";
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(157, 32);
+            lblNombre.Location = new Point(179, 43);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(51, 15);
+            lblNombre.Size = new Size(64, 20);
             lblNombre.TabIndex = 10;
             lblNombre.Text = "Nombre";
             // 
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(349, 32);
+            lblApellido.Location = new Point(399, 43);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(51, 15);
+            lblApellido.Size = new Size(66, 20);
             lblApellido.TabIndex = 9;
             lblApellido.Text = "Apellido";
             // 
             // lblDireccion
             // 
             lblDireccion.AutoSize = true;
-            lblDireccion.Location = new Point(28, 93);
+            lblDireccion.Location = new Point(32, 124);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(57, 15);
+            lblDireccion.Size = new Size(72, 20);
             lblDireccion.TabIndex = 8;
             lblDireccion.Text = "Dirección";
             // 
             // lblDNI
             // 
             lblDNI.AutoSize = true;
-            lblDNI.Location = new Point(28, 32);
+            lblDNI.Location = new Point(32, 43);
             lblDNI.Name = "lblDNI";
-            lblDNI.Size = new Size(27, 15);
+            lblDNI.Size = new Size(35, 20);
             lblDNI.TabIndex = 7;
             lblDNI.Text = "DNI";
             lblDNI.Click += label1_Click;
             // 
             // txtDNI
             // 
-            txtDNI.Location = new Point(28, 49);
-            txtDNI.Margin = new Padding(3, 2, 3, 2);
+            txtDNI.Location = new Point(32, 65);
             txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(105, 23);
+            txtDNI.Size = new Size(119, 27);
             txtDNI.TabIndex = 6;
             // 
             // cboLocalidad
             // 
             cboLocalidad.FormattingEnabled = true;
-            cboLocalidad.Location = new Point(411, 110);
-            cboLocalidad.Margin = new Padding(3, 2, 3, 2);
+            cboLocalidad.Location = new Point(470, 147);
             cboLocalidad.Name = "cboLocalidad";
-            cboLocalidad.Size = new Size(142, 23);
+            cboLocalidad.Size = new Size(162, 28);
             cboLocalidad.TabIndex = 4;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(28, 110);
-            txtDireccion.Margin = new Padding(3, 2, 3, 2);
+            txtDireccion.Location = new Point(32, 147);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(170, 23);
+            txtDireccion.Size = new Size(194, 27);
             txtDireccion.TabIndex = 3;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(221, 110);
-            txtEmail.Margin = new Padding(3, 2, 3, 2);
+            txtEmail.Location = new Point(253, 147);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(170, 23);
+            txtEmail.Size = new Size(194, 27);
             txtEmail.TabIndex = 2;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(157, 49);
-            txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.Location = new Point(179, 65);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(170, 23);
+            txtNombre.Size = new Size(194, 27);
             txtNombre.TabIndex = 1;
+            txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(349, 49);
-            txtApellido.Margin = new Padding(3, 2, 3, 2);
+            txtApellido.Location = new Point(399, 65);
             txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(204, 23);
+            txtApellido.Size = new Size(233, 27);
             txtApellido.TabIndex = 0;
             // 
             // flowLayoutPanelInferior
@@ -179,20 +176,18 @@
             flowLayoutPanelInferior.Controls.Add(btnGuardar);
             flowLayoutPanelInferior.Dock = DockStyle.Bottom;
             flowLayoutPanelInferior.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanelInferior.Location = new Point(0, 210);
-            flowLayoutPanelInferior.Margin = new Padding(3, 2, 3, 2);
+            flowLayoutPanelInferior.Location = new Point(0, 280);
             flowLayoutPanelInferior.Name = "flowLayoutPanelInferior";
-            flowLayoutPanelInferior.Size = new Size(578, 48);
+            flowLayoutPanelInferior.Size = new Size(654, 64);
             flowLayoutPanelInferior.TabIndex = 2;
             // 
             // btnCancelar
             // 
             btnCancelar.Image = Properties.Resources.db_cancel;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelar.Location = new Point(498, 2);
-            btnCancelar.Margin = new Padding(3, 2, 3, 2);
+            btnCancelar.Location = new Point(563, 3);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(77, 39);
+            btnCancelar.Size = new Size(88, 52);
             btnCancelar.TabIndex = 0;
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
@@ -203,24 +198,26 @@
             // 
             btnGuardar.Image = Properties.Resources.save;
             btnGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardar.Location = new Point(420, 2);
-            btnGuardar.Margin = new Padding(3, 2, 3, 2);
+            btnGuardar.Location = new Point(475, 3);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(72, 39);
+            btnGuardar.Size = new Size(82, 52);
             btnGuardar.TabIndex = 1;
             btnGuardar.Text = "Guardar";
             btnGuardar.TextAlign = ContentAlignment.MiddleRight;
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnAceptar_Click;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // frmSociosCarga
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(578, 258);
+            ClientSize = new Size(654, 344);
             Controls.Add(flowLayoutPanelInferior);
             Controls.Add(panelDatos);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmSociosCarga";
             Text = "frmSociosCarga";
             FormClosed += frmSociosCarga_FormClosed;
@@ -228,6 +225,7 @@
             panelDatos.ResumeLayout(false);
             panelDatos.PerformLayout();
             flowLayoutPanelInferior.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -248,5 +246,6 @@
         private Label lblNombre;
         private Label lblApellido;
         private Label lblDireccion;
+        private ErrorProvider errorProvider1;
     }
 }

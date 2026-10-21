@@ -38,6 +38,7 @@
             btnBuscar = new Button();
             txtBusqueda = new TextBox();
             panelDatos = new Panel();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridSocios).BeginInit();
             flowLayoutPanelInferior.SuspendLayout();
             panelSuperior.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             flowLayoutPanelInferior.Controls.Add(button1);
             flowLayoutPanelInferior.Controls.Add(button2);
+            flowLayoutPanelInferior.Controls.Add(button5);
             flowLayoutPanelInferior.Controls.Add(button3);
             flowLayoutPanelInferior.Controls.Add(button4);
             flowLayoutPanelInferior.Dock = DockStyle.Bottom;
@@ -90,7 +92,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(657, 3);
+            button3.Location = new Point(552, 3);
             button3.Name = "button3";
             button3.Size = new Size(99, 59);
             button3.TabIndex = 2;
@@ -100,7 +102,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(552, 3);
+            button4.Location = new Point(447, 3);
             button4.Name = "button4";
             button4.Size = new Size(99, 59);
             button4.TabIndex = 3;
@@ -145,6 +147,16 @@
             panelDatos.Size = new Size(969, 402);
             panelDatos.TabIndex = 6;
             // 
+            // button5
+            // 
+            button5.Location = new Point(657, 3);
+            button5.Name = "button5";
+            button5.Size = new Size(99, 59);
+            button5.TabIndex = 4;
+            button5.Text = "Eliminar";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
             // frmSocios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -175,5 +187,6 @@
         private Button button4;
         private Button btnBuscar;
         private TextBox txtBusqueda;
+        private Button button5;
     }
 }

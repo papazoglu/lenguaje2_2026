@@ -12,6 +12,12 @@ namespace Service
             return _sociosRepository.listarSocios();
         }
 
+        public bool eliminarSocio(int id_socio)
+        {
+            return _sociosRepository.eliminarSocio(id_socio);
+        }
+
+
         public List<Localidad> CargarComboLocalidades()
         {
 
