@@ -13,6 +13,7 @@ namespace View
     public partial class frmSociosCarga : Form
     {
         int _accion;
+        bool _editado;
         int _id_socio;
         private frmSocios _formSocios;
         public SociosController _socioController = new SociosController();
@@ -58,7 +59,7 @@ namespace View
 
         private void frmSociosCarga_Load(object sender, EventArgs e)
         {
-
+            _editado = false;
         }
 
         private bool ValidarNombre()
@@ -81,8 +82,9 @@ namespace View
         {
             try
             {
+            _editado=false;    
             //unificar las validaciones de campos en la vista o en el cotrolador
-            if (!ValidarNombre())
+                if (!ValidarNombre())
                 {
                     txtNombre.Focus();
                     return;
@@ -138,7 +140,8 @@ namespace View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+        _editado=false;    
+        this.Close();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -151,6 +154,31 @@ namespace View
             if (!string.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 errorProvider1.SetError(txtNombre, "");
+            }
+            _editado = true;
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            _editado = true;
+        }
+
+        private void frmSociosCarga_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(_editado){
+                
+                DialogResult respuesta = MessageBox.Show("¿Desea cerrar el formulario sin guardar los cambios?","Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    e.Cancel = false;
+                }
+                else if (respuesta == DialogResult.No)
+                {
+                    e.Cancel = true;    
+                    // No se cierra el formulario
+                }
+
             }
         }
     }

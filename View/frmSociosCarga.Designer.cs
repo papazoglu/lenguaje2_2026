@@ -132,6 +132,7 @@
             txtDNI.Name = "txtDNI";
             txtDNI.Size = new Size(119, 27);
             txtDNI.TabIndex = 6;
+            txtDNI.TextChanged += txtDNI_TextChanged;
             // 
             // cboLocalidad
             // 
@@ -220,6 +221,7 @@
             Controls.Add(panelDatos);
             Name = "frmSociosCarga";
             Text = "frmSociosCarga";
+            FormClosing += frmSociosCarga_FormClosing;
             FormClosed += frmSociosCarga_FormClosed;
             Load += frmSociosCarga_Load;
             panelDatos.ResumeLayout(false);
