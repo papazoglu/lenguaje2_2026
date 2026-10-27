@@ -82,8 +82,8 @@ namespace View
         {
             try
             {
-            _editado=false;    
-            //unificar las validaciones de campos en la vista o en el cotrolador
+                _editado = false;
+                //unificar las validaciones de campos en la vista o en el cotrolador
                 if (!ValidarNombre())
                 {
                     txtNombre.Focus();
@@ -140,8 +140,8 @@ namespace View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-        _editado=false;    
-        this.Close();
+            _editado = false;
+            this.Close();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -165,9 +165,10 @@ namespace View
 
         private void frmSociosCarga_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(_editado){
-                
-                DialogResult respuesta = MessageBox.Show("¿Desea cerrar el formulario sin guardar los cambios?","Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (_editado)
+            {
+
+                DialogResult respuesta = MessageBox.Show("¿Desea cerrar el formulario sin guardar los cambios?", "Confirmar cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (respuesta == DialogResult.Yes)
                 {
@@ -175,11 +176,21 @@ namespace View
                 }
                 else if (respuesta == DialogResult.No)
                 {
-                    e.Cancel = true;    
+                    e.Cancel = true;
                     // No se cierra el formulario
                 }
 
             }
+        }
+
+        private void cboLocalidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _editado = true;
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

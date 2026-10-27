@@ -141,6 +141,7 @@
             cboLocalidad.Name = "cboLocalidad";
             cboLocalidad.Size = new Size(162, 28);
             cboLocalidad.TabIndex = 4;
+            cboLocalidad.SelectedIndexChanged += cboLocalidad_SelectedIndexChanged;
             // 
             // txtDireccion
             // 
@@ -155,6 +156,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(194, 27);
             txtEmail.TabIndex = 2;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // txtNombre
             // 
